@@ -19,7 +19,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
-    console.log('database connected');
+    const profileCollection = client.db('auth_system').collection('profiles');
   } finally {
   }
 }
