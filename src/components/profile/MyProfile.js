@@ -1,10 +1,29 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
+import Loading from '../shared/Loading';
 import UpdateProfileModal from './UpdateProfileModal';
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
+
+  const {
+    data: profiles,
+    isLoading,
+    refetch,
+  } = useQuery('profile', () =>
+    fetch(`http://localhost:5000/profile?email=${user.email}`, {
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <div className='lg:flex md:flex sm:flex-row items-center justify-center w-100 mx-auto mt-20'>
@@ -52,7 +71,7 @@ const MyProfile = () => {
           <span className='text-gray-500'>Gender:</span>{' '}
         </p>
       </div>
-      {<UpdateProfileModal />}
+      {<UpdateProfileModal profiles={profiles} refetch={refetch} />}
     </>
   );
 };
