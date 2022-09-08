@@ -50,6 +50,13 @@ async function run() {
       const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
       res.send({ result, token });
     });
+
+    // send user profile data to server
+    app.post('/updateProfile', async (req, res) => {
+      const profile = req.body;
+      const result = await profileCollection.insertOne(profile);
+      res.send(result);
+    });
   } finally {
   }
 }
