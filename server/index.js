@@ -51,6 +51,12 @@ async function run() {
       res.send({ result, token });
     });
 
+    // load users data
+    app.get('/user', verifyJWT, async (req, res) => {
+      const users = await userCollection.find().toArray();
+      res.send(users);
+    });
+
     // get user profile data
     app.get('/profile', verifyJWT, async (req, res) => {
       const email = req.query.email;
