@@ -3,6 +3,7 @@ import Login from './components/auth/Login';
 import RequireAuth from './components/auth/RequireAuth';
 import SignUp from './components/auth/SignUp';
 import MyProfile from './components/profile/MyProfile';
+import Footer from './components/shared/Footer';
 import Navbar from './components/shared/Navbar';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
       </Routes>
+      <Footer />
     </>
   );
 }
