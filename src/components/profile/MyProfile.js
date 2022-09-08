@@ -51,24 +51,24 @@ const MyProfile = () => {
           </label>
         </div>
       </div>
-      <div className='shadow rounded-md w-96 mx-auto p-10 mt-10'>
+      <div className='shadow rounded-md w-[45vw] mx-auto p-10 mt-10'>
         <p className='font-bold text-lg p-2 m-1 bg-gray-100 rounded-md'>
-          <span className='text-gray-500'>Education:</span>{' '}
+          <span className='text-gray-500'>Education:</span> {profiles[0]?.education}
         </p>
         <p className='font-bold text-lg p-2 m-1 bg-gray-100 rounded-md'>
-          <span className='text-gray-500'>Location:</span>{' '}
+          <span className='text-gray-500'>Location:</span> {profiles[0]?.location}
         </p>
         <p className='font-bold text-lg p-2 m-1 bg-gray-100 rounded-md'>
-          <span className='text-gray-500'>Phone Number:</span>{' '}
+          <span className='text-gray-500'>Phone Number:</span> {profiles[0]?.phone}
         </p>
         <p className='font-bold text-lg p-2 m-1 bg-gray-100 rounded-md'>
-          <span className='text-gray-500'>LinkedIn Id:</span>{' '}
+          <span className='text-gray-500'>LinkedIn Id:</span> {profiles[0]?.linkedin}
         </p>
         <p className='font-bold text-lg p-2 m-1 bg-gray-100 rounded-md'>
-          <span className='text-gray-500'>Age:</span>{' '}
+          <span className='text-gray-500'>Age:</span> {profiles[0]?.age}
         </p>
         <p className='font-bold text-lg p-2 m-1 bg-gray-100 rounded-md'>
-          <span className='text-gray-500'>Gender:</span>{' '}
+          <span className='text-gray-500'>Gender:</span> {profiles[0]?.gender}
         </p>
       </div>
       {<UpdateProfileModal profiles={profiles} refetch={refetch} />}

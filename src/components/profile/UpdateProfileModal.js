@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 
 const UpdateProfileModal = ({ profiles, refetch }) => {
@@ -14,6 +15,8 @@ const UpdateProfileModal = ({ profiles, refetch }) => {
       location: e.target.location.value,
       phone: e.target.phone.value,
       linkedin: e.target.linkedin.value,
+      age: e.target.age.value,
+      gender: e.target.gender.value,
     };
 
     if (profiles[0] === undefined) {
@@ -60,6 +63,7 @@ const UpdateProfileModal = ({ profiles, refetch }) => {
               <span className='label-text'>Education</span>
             </label>
             <input
+              defaultValue={profiles[0]?.education}
               type='text'
               name='education'
               placeholder='Your Education'
@@ -69,6 +73,7 @@ const UpdateProfileModal = ({ profiles, refetch }) => {
               <span className='label-text'>Location</span>
             </label>
             <input
+              defaultValue={profiles[0]?.location}
               type='text'
               name='location'
               placeholder='Your Location'
@@ -77,19 +82,38 @@ const UpdateProfileModal = ({ profiles, refetch }) => {
             <label className='label'>
               <span className='label-text'>Phone Number</span>
             </label>
-            <input type='text' name='phone' placeholder='Phone Number' className='input w-full max-w-xs bg-gray-100' />
+            <input
+              defaultValue={profiles[0]?.phone}
+              type='text'
+              name='phone'
+              placeholder='Phone Number'
+              className='input w-full max-w-xs bg-gray-100'
+            />
             <label className='label'>
               <span className='label-text'>Age</span>
             </label>
-            <input type='text' name='age' placeholder='Your Age' className='input w-full max-w-xs bg-gray-100' />
+            <input
+              defaultValue={profiles[0]?.age}
+              type='text'
+              name='age'
+              placeholder='Your Age'
+              className='input w-full max-w-xs bg-gray-100'
+            />
             <label className='label'>
               <span className='label-text'>Gender</span>
             </label>
-            <input type='text' name='gender' placeholder='Gender' className='input w-full max-w-xs bg-gray-100' />
+            <input
+              defaultValue={profiles[0]?.gender}
+              type='text'
+              name='gender'
+              placeholder='Gender'
+              className='input w-full max-w-xs bg-gray-100'
+            />
             <label className='label'>
               <span className='label-text'>LinkedIn Id</span>
             </label>
             <input
+              defaultValue={profiles[0]?.linkedin}
               type='text'
               name='linkedin'
               placeholder='Your LinkedIn Id'
