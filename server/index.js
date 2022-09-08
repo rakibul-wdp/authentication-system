@@ -51,6 +51,19 @@ async function run() {
       res.send({ result, token });
     });
 
+    // get user profile data
+    app.get('/profile', verifyJWT, async (req, res) => {
+      const email = req.query.email;
+      const decodedEmail = req.decoded.email;
+      if (email === decodedEmail) {
+        const query = { email: email };
+        const profiles = await profileCollection.find(query).toArray();
+        res.send(profiles);
+      } else {
+        return res.status(403).send({ message: 'forbidden access' });
+      }
+    });
+
     // send user profile data to server
     app.post('/updateProfile', async (req, res) => {
       const profile = req.body;

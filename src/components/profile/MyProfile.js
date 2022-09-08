@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import UpdateProfileModal from './UpdateProfileModal';
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
@@ -51,6 +52,7 @@ const MyProfile = () => {
           <span className='text-gray-500'>Gender:</span>{' '}
         </p>
       </div>
+      {<UpdateProfileModal />}
     </>
   );
 };

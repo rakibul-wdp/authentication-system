@@ -1,0 +1,70 @@
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+
+const UpdateProfileModal = () => {
+  const [user] = useAuthState(auth);
+
+  const handleOrder = (e) => {};
+  return (
+    <div>
+      <input type='checkbox' id='profile-modal' className='modal-toggle' />
+      <div className='modal modal-bottom sm:modal-middle'>
+        <div className='modal-box'>
+          <label htmlFor='profile-modal' className='btn btn-sm btn-circle absolute right-2 top-2'>
+            ✕
+          </label>
+          <h3 className='font-bold text-lg text-center'>Update Your Profile</h3>
+          <form onSubmit={handleOrder} className='w-80 mx-auto'>
+            <label className='label'>
+              <span className='label-text'>Education</span>
+            </label>
+            <input
+              type='text'
+              name='education'
+              placeholder='Your Education'
+              className='input w-full max-w-xs bg-gray-100'
+            />
+            <label className='label'>
+              <span className='label-text'>Location</span>
+            </label>
+            <input
+              type='text'
+              name='location'
+              placeholder='Your Location'
+              className='input w-full max-w-xs bg-gray-100'
+            />
+            <label className='label'>
+              <span className='label-text'>Phone Number</span>
+            </label>
+            <input type='text' name='phone' placeholder='Phone Number' className='input w-full max-w-xs bg-gray-100' />
+            <label className='label'>
+              <span className='label-text'>Age</span>
+            </label>
+            <input type='text' name='age' placeholder='Your Age' className='input w-full max-w-xs bg-gray-100' />
+            <label className='label'>
+              <span className='label-text'>Gender</span>
+            </label>
+            <input type='text' name='gender' placeholder='Gender' className='input w-full max-w-xs bg-gray-100' />
+            <label className='label'>
+              <span className='label-text'>LinkedIn Id</span>
+            </label>
+            <input
+              type='text'
+              name='linkedin'
+              placeholder='Your LinkedIn Id'
+              className='input w-full max-w-xs bg-gray-100'
+            />
+            <input
+              type='submit'
+              value='Update Profile'
+              className='btn btn-primary w-full max-w-xs mt-5 text-base-100'
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UpdateProfileModal;
