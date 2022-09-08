@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -68,6 +68,19 @@ async function run() {
     app.post('/updateProfile', async (req, res) => {
       const profile = req.body;
       const result = await profileCollection.insertOne(profile);
+      res.send(result);
+    });
+
+    // update user profile data to server
+    app.put('/updateProfile/:id', async (req, res) => {
+      const id = req.params.id;
+      const profile = req.body;
+      const filter = { _id: ObjectId(id) };
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: profile,
+      };
+      const result = await profileCollection.updateOne(filter, updateDoc, options);
       res.send(result);
     });
   } finally {
