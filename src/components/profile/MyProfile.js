@@ -13,7 +13,7 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery('profile', () =>
-    fetch(`https://limitless-tor-72805.herokuapp.com/profile?email=${user.email}`, {
+    fetch(`https://stormy-cove-04118.herokuapp.com/profile?email=${user.email}`, {
       method: 'GET',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
